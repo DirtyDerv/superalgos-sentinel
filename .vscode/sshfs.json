@@ -1,0 +1,15 @@
+[
+    {
+        "name": "superalgos_server",
+        "host": "192.168.0.26",
+        "port": 22,
+        "username": "d3rv",
+        "password": "#ErazerP15",
+        "root": "/home/d3rv/sentinel",
+        "privateKeyPath": "",
+        "passphrase": "",
+            "uploadOnSave": true,
+        "downloadOnOpen": true,
+        "ignore": [".vscode", ".git", ".DS_Store"]
+    }
+]

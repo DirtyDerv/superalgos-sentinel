@@ -1,0 +1,49 @@
+{
+  "name": "SentinelSniper",
+  "description": "Low-cap multi-exchange sniper with sentiment filtering, volatility shielding, and arbitrage scanning.",
+  "strategy": {
+    "entryConditions": {
+      "RSI": { "indicator": "RSI", "period": 14, "operator": "<", "threshold": 30 },
+      "EMA": { "fast": 9, "slow": 21, "condition": "fast > slow" },
+      "VolumeSpike": { "lookback": 10, "multiplier": 2.0 }
+    },
+    "sentimentFilter": {
+      "weighted": {
+        "santiment": 0.5,
+        "dash2trade": 0.3,
+        "cryptoquant": 0.2
+      },
+      "thresholdBase": 0.6,
+      "adaptive": true
+    },
+    "volatilityShield": {
+      "metric": "ATR",
+      "period": 14,
+      "thresholdEnter": "0.5%",
+      "thresholdStealth": "0.8%"
+    },
+    "arbitrageScanner": {
+      "enabled": true,
+      "minSpread": "0.5%",
+      "maxTradeSize": "£5",
+      "cooldown": "15m",
+      "exchanges": ["Binance", "Kraken", "Coinbase", "Bitstamp"]
+    },
+    "execution": {
+      "orderType": "Limit",
+      "positionSize": "95%",
+      "takeProfit": "0.7%",
+      "stopLoss": "0.4%",
+      "cooldown": "10m"
+    },
+    "risk": {
+      "maxPerTrade": "£2",
+      "trailingStop": true
+    },
+    "telemetry": {
+      "logTrades": true,
+      "logSentiment": true,
+      "dashboard": true
+    }
+  }
+}
